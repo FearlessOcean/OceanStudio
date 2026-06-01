@@ -1,0 +1,7 @@
+langchain
+langchain-ollama
+psutil
+rich
+flask
+sentence-transformers
+numpy

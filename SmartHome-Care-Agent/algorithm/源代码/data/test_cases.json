@@ -1,0 +1,737 @@
+[
+  {
+    "id": "T001",
+    "category": "设备控制",
+    "difficulty": "easy",
+    "description": "直接指令：开关设备",
+    "input": "把客厅灯打开。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "device_name": "living_room_light",
+      "action": "turn_on"
+    }
+  },
+  {
+    "id": "T002",
+    "category": "设备控制",
+    "difficulty": "easy",
+    "description": "直接指令：设置温度",
+    "input": "把卧室空调调到24度。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "action": "set_temperature",
+      "value": "24"
+    }
+  },
+  {
+    "id": "T003",
+    "category": "设备控制",
+    "difficulty": "easy",
+    "description": "口语化表达：关闭设备",
+    "input": "帮我关一下卧室的灯。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "action": "turn_off"
+    }
+  },
+  {
+    "id": "T004",
+    "category": "设备控制",
+    "difficulty": "medium",
+    "description": "模糊设备名称：需推断房间",
+    "input": "奶奶说她冷，把她房间的空调温度调高一点，设到28度吧。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "action": "set_temperature",
+      "value": "28"
+    }
+  },
+  {
+    "id": "T005",
+    "category": "设备控制",
+    "difficulty": "medium",
+    "description": "亮度调节",
+    "input": "客厅灯太亮了，调暗一点，亮度设为40%。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "action": "set_brightness",
+      "value": "40"
+    }
+  },
+  {
+    "id": "T006",
+    "category": "设备控制",
+    "difficulty": "medium",
+    "description": "隐式环境描述：客厅热→调空调",
+    "input": "客厅有点热，把空调调到25度吧。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "device_name": "living_room_ac",
+      "action": "set_temperature",
+      "value": "25"
+    }
+  },
+  {
+    "id": "T007",
+    "category": "健康记录",
+    "difficulty": "easy",
+    "description": "直接记录症状",
+    "input": "帮我记录一下，爷爷今天头痛。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷",
+      "symptom": "头痛"
+    }
+  },
+  {
+    "id": "T008",
+    "category": "健康记录",
+    "difficulty": "easy",
+    "description": "记录血压数值",
+    "input": "刚给奶奶量了血压，140/90，帮我记一下。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "奶奶"
+    }
+  },
+  {
+    "id": "T009",
+    "category": "健康记录",
+    "difficulty": "easy",
+    "description": "记录血糖",
+    "input": "爸爸今天空腹血糖7.2，超标了，记录一下。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "爸爸"
+    }
+  },
+  {
+    "id": "T010",
+    "category": "健康记录",
+    "difficulty": "medium",
+    "description": "口语化症状描述",
+    "input": "妈妈说最近睡不好，总是凌晨三四点就醒了，帮我记录这个。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "妈妈"
+    }
+  },
+  {
+    "id": "T011",
+    "category": "健康记录",
+    "difficulty": "medium",
+    "description": "多症状同时记录",
+    "input": "孩子今天又发烧了，还说肚子疼，帮我记一下。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "孩子"
+    }
+  },
+  {
+    "id": "T012",
+    "category": "健康记录",
+    "difficulty": "hard",
+    "description": "隐式成员名称",
+    "input": "老爷子今天关节疼，走路有点困难，记一下。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T013",
+    "category": "健康告警",
+    "difficulty": "easy",
+    "description": "明确高烧告警",
+    "input": "奶奶体温39.5度，超高了，赶紧告警！",
+    "expected_tools": [
+      "trigger_health_alert",
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "奶奶",
+      "alert_type": "high_fever"
+    },
+    "tool_optional": true
+  },
+  {
+    "id": "T014",
+    "category": "健康告警",
+    "difficulty": "easy",
+    "description": "跌倒告警",
+    "input": "爷爷在浴室摔倒了，快告警！",
+    "expected_tools": [
+      "trigger_health_alert"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷",
+      "alert_type": "fall_detected"
+    }
+  },
+  {
+    "id": "T015",
+    "category": "健康告警",
+    "difficulty": "medium",
+    "description": "血压异常告警",
+    "input": "爷爷血压180/110，太高了，需要告警处理。",
+    "expected_tools": [
+      "trigger_health_alert"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷"
+    }
+  },
+  {
+    "id": "T016",
+    "category": "健康告警",
+    "difficulty": "medium",
+    "description": "长时间无活动告警",
+    "input": "奶奶已经3个小时没有动静了，帮我触发一个无活动告警。",
+    "expected_tools": [
+      "trigger_health_alert"
+    ],
+    "expected_args_contain": {
+      "alert_type": "no_activity"
+    }
+  },
+  {
+    "id": "T017",
+    "category": "健康告警",
+    "difficulty": "hard",
+    "description": "隐式异常推断",
+    "input": "爷爷说胸口很不舒服，心跳感觉不规律，这个要告警吗？",
+    "expected_tools": [
+      "trigger_health_alert"
+    ],
+    "expected_args_contain": {
+      "alert_type": "irregular_heartbeat"
+    }
+  },
+  {
+    "id": "T018",
+    "category": "历史查询",
+    "difficulty": "easy",
+    "description": "查询最近记录",
+    "input": "查一下奶奶最近的健康记录。",
+    "expected_tools": [
+      "query_health_records"
+    ],
+    "expected_args_contain": {
+      "member_name": "奶奶"
+    }
+  },
+  {
+    "id": "T019",
+    "category": "历史查询",
+    "difficulty": "easy",
+    "description": "查询指定条数",
+    "input": "帮我看看爷爷最近10条健康记录。",
+    "expected_tools": [
+      "query_health_records"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷",
+      "recent_n": 10
+    }
+  },
+  {
+    "id": "T020",
+    "category": "历史查询",
+    "difficulty": "medium",
+    "description": "口语化查询",
+    "input": "最近爸爸身体状况怎么样，有没有记录在案的？",
+    "expected_tools": [
+      "query_health_records"
+    ],
+    "expected_args_contain": {
+      "member_name": "爸爸"
+    }
+  },
+  {
+    "id": "T021",
+    "category": "用药提醒",
+    "difficulty": "easy",
+    "description": "设置每日用药",
+    "input": "帮爷爷设置提醒，每天早上吃一片阿司匹林。",
+    "expected_tools": [
+      "set_medication_reminder"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷",
+      "medication": "阿司匹林"
+    }
+  },
+  {
+    "id": "T022",
+    "category": "用药提醒",
+    "difficulty": "easy",
+    "description": "三餐用药提醒",
+    "input": "奶奶需要每天三餐后吃降糖药，帮我设置提醒。",
+    "expected_tools": [
+      "set_medication_reminder"
+    ],
+    "expected_args_contain": {
+      "member_name": "奶奶"
+    }
+  },
+  {
+    "id": "T023",
+    "category": "用药提醒",
+    "difficulty": "medium",
+    "description": "指定时间点",
+    "input": "每天晚上8点提醒爸爸吃降压药两片。",
+    "expected_tools": [
+      "set_medication_reminder"
+    ],
+    "expected_args_contain": {
+      "member_name": "爸爸"
+    }
+  },
+  {
+    "id": "T024",
+    "category": "环境感知",
+    "difficulty": "easy",
+    "description": "读取温度",
+    "input": "卧室现在温度多少？",
+    "expected_tools": [
+      "read_environment_sensor"
+    ],
+    "expected_args_contain": {
+      "room": "bedroom",
+      "sensor_type": "temperature"
+    }
+  },
+  {
+    "id": "T025",
+    "category": "环境感知",
+    "difficulty": "easy",
+    "description": "读取空气质量",
+    "input": "客厅空气质量怎么样？",
+    "expected_tools": [
+      "read_environment_sensor"
+    ],
+    "expected_args_contain": {
+      "room": "living_room",
+      "sensor_type": "air_quality"
+    }
+  },
+  {
+    "id": "T026",
+    "category": "环境感知",
+    "difficulty": "medium",
+    "description": "读取湿度",
+    "input": "卧室太干燥了，看看湿度是多少。",
+    "expected_tools": [
+      "read_environment_sensor"
+    ],
+    "expected_args_contain": {
+      "room": "bedroom",
+      "sensor_type": "humidity"
+    }
+  },
+  {
+    "id": "T027",
+    "category": "复合任务",
+    "difficulty": "medium",
+    "description": "健康记录 + 设备控制",
+    "input": "我奶奶今天有点发烧，帮我在系统里记录一下，另外马上把她卧室的空调调到26度。",
+    "expected_tools": [
+      "add_health_record",
+      "control_smart_device"
+    ],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T028",
+    "category": "复合任务",
+    "difficulty": "hard",
+    "description": "高烧：记录 + 告警 双工具",
+    "input": "奶奶烧到39.8度了，帮我记录症状，同时触发高烧告警。",
+    "expected_tools": [
+      "add_health_record",
+      "trigger_health_alert"
+    ],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T029",
+    "category": "复合任务",
+    "difficulty": "hard",
+    "description": "跌倒：告警 + 传感器 双工具",
+    "input": "爷爷在浴室摔倒了，帮我发出跌倒告警，然后读取一下浴室的温度传感器数据",
+    "expected_tools": [
+      "trigger_health_alert",
+      "read_environment_sensor"
+    ],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T030",
+    "category": "复合任务",
+    "difficulty": "hard",
+    "description": "三工具并发：记录+告警+设备",
+    "input": "奶奶发烧39度，帮我记录下来，告警通知家人，再把她卧室空调调到27度。",
+    "expected_tools": [
+      "add_health_record",
+      "trigger_health_alert",
+      "control_smart_device"
+    ],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T031",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "发烧处置建议（触发RAG）",
+    "input": "奶奶发烧38度，我应该怎么处理？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": [
+      "物理降温",
+      "退烧药",
+      "布洛芬"
+    ]
+  },
+  {
+    "id": "T032",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "血压知识咨询（触发RAG）",
+    "input": "正常血压是多少？高血压怎么处理？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": [
+      "140",
+      "90",
+      "盐"
+    ]
+  },
+  {
+    "id": "T033",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "跌倒处置知识（触发RAG）",
+    "input": "老人跌倒后应该怎么处理，能随便扶起来吗？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": [
+      "骨折",
+      "搬动",
+      "120"
+    ],
+    "tool_optional": true
+  },
+  {
+    "id": "T034",
+    "category": "知识问答",
+    "difficulty": "easy",
+    "description": "无关闲聊，不调用工具",
+    "input": "今天天气怎么样？",
+    "expected_tools": [],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T035",
+    "category": "知识问答",
+    "difficulty": "easy",
+    "description": "Agent自我介绍",
+    "input": "你是谁？你能做什么？",
+    "expected_tools": [],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T036",
+    "category": "多轮对话",
+    "difficulty": "hard",
+    "description": "第一轮：记录症状",
+    "input": "帮我记录一下，爷爷今天血压有点高，170/100。",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷"
+    },
+    "turn": 1,
+    "session_id": "S001"
+  },
+  {
+    "id": "T037",
+    "category": "多轮对话",
+    "difficulty": "hard",
+    "description": "第二轮：基于上文追问历史",
+    "input": "他之前有没有类似的记录？",
+    "expected_tools": [
+      "query_health_records"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷"
+    },
+    "turn": 2,
+    "session_id": "S001"
+  },
+  {
+    "id": "T038",
+    "category": "多轮对话",
+    "difficulty": "hard",
+    "description": "第三轮：追加处置动作",
+    "input": "情况有点严重，帮我触发血压异常告警。",
+    "expected_tools": [
+      "trigger_health_alert"
+    ],
+    "expected_args_contain": {
+      "alert_type": "abnormal_bp"
+    },
+    "turn": 3,
+    "session_id": "S001"
+  },
+  {
+    "id": "T039",
+    "category": "边界情况",
+    "difficulty": "hard",
+    "description": "未知设备名，需推断",
+    "input": "把书房的台灯调暗一些，亮度30。",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "action": "set_brightness",
+      "value": "30"
+    }
+  },
+  {
+    "id": "T040",
+    "category": "边界情况",
+    "difficulty": "hard",
+    "description": "否定句：取消提醒",
+    "input": "不用给爷爷设阿司匹林提醒了，医生说停药了。",
+    "expected_tools": [],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T041",
+    "category": "边界情况",
+    "difficulty": "hard",
+    "description": "纯符号/乱码输入，不调工具",
+    "input": "！@#￥%……&*（）",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "tool_optional": false
+  },
+  {
+    "id": "T042",
+    "category": "复合任务",
+    "difficulty": "hard",
+    "description": "同时为两个成员记录健康数据",
+    "input": "帮我记录一下：爷爷血压170/100，奶奶血糖8.5",
+    "expected_tools": [
+      "add_health_record",
+      "add_health_record"
+    ],
+    "expected_args_contain": {},
+    "tool_optional": true
+  },
+  {
+    "id": "T043",
+    "category": "设备控制",
+    "difficulty": "medium",
+    "description": "重复开启同一设备（幂等）",
+    "input": "把客厅的灯打开",
+    "expected_tools": [
+      "control_smart_device"
+    ],
+    "expected_args_contain": {
+      "action": "turn_on"
+    }
+  },
+  {
+    "id": "T044",
+    "category": "用药提醒",
+    "difficulty": "medium",
+    "description": "修改已有提醒的时间",
+    "input": "把爸爸的降压药提醒改到每天晚上8点",
+    "expected_tools": [
+      "set_medication_reminder"
+    ],
+    "expected_args_contain": {
+      "member_name": "爸爸",
+      "schedule": "8"
+    }
+  },
+  {
+    "id": "T045",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "跌倒能否随意搬动（RAG不调工具）",
+    "input": "老人摔倒了能随便扶起来吗，怎么判断有没有骨折",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": [
+      "骨折",
+      "搬动",
+      "120"
+    ]
+  },
+  {
+    "id": "T046",
+    "category": "边界情况",
+    "difficulty": "hard",
+    "description": "超长输入中提取有效指令",
+    "input": "今天天气还不错，我出去买菜了，顺便买了一些水果，路上看到邻居也在遛狗，回来后发现爷爷说头有点晕，血压量了一下是160/95，帮我记录一下",
+    "expected_tools": [
+      "add_health_record"
+    ],
+    "expected_args_contain": {
+      "member_name": "爷爷"
+    }
+  },
+
+  {
+    "id": "T047",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "头晕处置知识（RAG新增）",
+    "input": "奶奶说头晕眼花的，站起来就晕，怎么办？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": ["头晕", "就医"]
+  },
+  {
+    "id": "T048",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "胸闷紧急处置（RAG新增）",
+    "input": "爷爷突然胸口闷，喘不上气，我应该怎么做？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": ["120", "心肌梗死", "胸痛"]
+  },
+  {
+    "id": "T049",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "燃气泄漏处置（RAG新增）",
+    "input": "家里好像有燃气味，该怎么处理？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": ["阀门", "通风", "明火"]
+  },
+  {
+    "id": "T050",
+    "category": "知识问答",
+    "difficulty": "medium",
+    "description": "认知障碍识别（RAG新增）",
+    "input": "爷爷最近记性越来越差，老是忘事，需要担心吗？",
+    "expected_tools": [],
+    "expected_args_contain": {},
+    "expected_rag_keywords": ["痴呆", "就医", "社交"]
+  },
+  {
+    "id": "T051",
+    "category": "健康告警",
+    "difficulty": "medium",
+    "description": "意识障碍告警",
+    "input": "奶奶突然叫不醒了，快触发紧急告警！",
+    "expected_tools": ["trigger_health_alert"],
+    "expected_args_contain": {
+      "member_name": "奶奶"
+    }
+  },
+  {
+    "id": "T052",
+    "category": "知识问答",
+    "difficulty": "easy",
+    "description": "超出能力边界：订外卖",
+    "input": "帮我订一份外卖，要宫保鸡丁。",
+    "expected_tools": [],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T053",
+    "category": "知识问答",
+    "difficulty": "easy",
+    "description": "超出能力边界：天气预报",
+    "input": "明天会下雨吗？",
+    "expected_tools": [],
+    "expected_args_contain": {}
+  },
+  {
+    "id": "T054",
+    "category": "历史查询",
+    "difficulty": "medium",
+    "description": "查询无记录成员",
+    "input": "帮我查一下小孙子最近的健康记录。",
+    "expected_tools": ["query_health_records"],
+    "expected_args_contain": {
+      "member_name": "孙"
+    }
+  },
+  {
+    "id": "T055",
+    "category": "多轮对话",
+    "difficulty": "hard",
+    "description": "第一轮：设备控制",
+    "input": "把卧室灯打开。",
+    "expected_tools": ["control_smart_device"],
+    "expected_args_contain": {
+      "action": "turn_on"
+    },
+    "turn": 1,
+    "session_id": "S002"
+  },
+  {
+    "id": "T056",
+    "category": "多轮对话",
+    "difficulty": "hard",
+    "description": "第二轮：调整同一设备",
+    "input": "太亮了，亮度调到30%。",
+    "expected_tools": ["control_smart_device"],
+    "expected_args_contain": {
+      "action": "set_brightness",
+      "value": "30"
+    },
+    "turn": 2,
+    "session_id": "S002"
+  },
+  {
+    "id": "T057",
+    "category": "复合任务",
+    "difficulty": "hard",
+    "description": "记录 + 查历史 双工具",
+    "input": "帮我记一下爸爸今天头痛，然后查一下他最近的健康记录。",
+    "expected_tools": ["add_health_record", "query_health_records"],
+    "expected_args_contain": {
+      "member_name": "爸爸"
+    }
+  },
+  {
+    "id": "T058",
+    "category": "边界情况",
+    "difficulty": "medium",
+    "description": "拒绝删除操作",
+    "input": "把奶奶昨天的血压记录删掉。",
+    "expected_tools": [],
+    "expected_args_contain": {}
+  }
+]

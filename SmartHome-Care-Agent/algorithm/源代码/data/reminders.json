@@ -1,0 +1,33 @@
+{
+  "爷爷": [
+    {
+      "medication": "阿司匹林1片",
+      "schedule": "每天早晚各一次",
+      "created_at": "2026-05-08 01:23:23",
+      "active": true
+    },
+    {
+      "medication": "降压药",
+      "schedule": "早上、晚上",
+      "created_at": "2026-05-08 01:26:04",
+      "active": true
+    }
+  ],
+  "奶奶": [
+    {
+      "medication": "降糖药1片",
+      "schedule": "饭后30分钟",
+      "created_at": "2026-05-08 01:23:26",
+      "active": true
+    }
+  ],
+  "爸爸": [
+    {
+      "medication": "降压药1片",
+      "schedule": "每天晚上8点",
+      "created_at": "2026-05-08 01:23:26",
+      "active": true,
+      "updated_at": "2026-05-08 01:23:50"
+    }
+  ]
+}

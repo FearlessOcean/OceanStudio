@@ -1,0 +1,80 @@
+{
+  "living_room_light": {
+    "action": "turn_on",
+    "value": null,
+    "updated_at": "2026-05-08 01:23:49",
+    "on": true,
+    "brightness": "40"
+  },
+  "bedroom_ac": {
+    "action": "set_temperature",
+    "value": "26",
+    "updated_at": "2026-05-08 01:26:02",
+    "on": true,
+    "temperature": "26"
+  },
+  "bedroom_light": {
+    "action": "set_brightness",
+    "value": "30",
+    "updated_at": "2026-05-08 01:24:04",
+    "on": true,
+    "brightness": "30"
+  },
+  "living_room_ac": {
+    "action": "set_temperature",
+    "value": "25",
+    "updated_at": "2026-05-08 01:23:04",
+    "on": true,
+    "temperature": "25"
+  },
+  "sensors": {
+    "living_room_humidity": {
+      "room": "living_room",
+      "type": "humidity",
+      "value": "48%",
+      "updated_at": "2026-05-08 01:23:25"
+    },
+    "bedroom_humidity": {
+      "room": "bedroom",
+      "type": "humidity",
+      "value": "55%",
+      "updated_at": "2026-05-08 01:23:28"
+    },
+    "living_room_air_quality": {
+      "room": "living_room",
+      "type": "air_quality",
+      "value": "PM2.5: 22 μg/m³（良）",
+      "updated_at": "2026-05-08 01:26:06"
+    },
+    "bathroom_temperature": {
+      "room": "bathroom",
+      "type": "temperature",
+      "value": "26.0°C",
+      "updated_at": "2026-05-08 01:23:33"
+    },
+    "bedroom_temperature": {
+      "room": "bedroom",
+      "type": "temperature",
+      "value": "23.5°C",
+      "updated_at": "2026-05-08 01:25:53"
+    },
+    "living_room_temperature": {
+      "room": "living_room",
+      "type": "temperature",
+      "value": "25.1°C",
+      "updated_at": "2026-05-08 01:26:06"
+    },
+    "bedroom_air_quality": {
+      "room": "bedroom",
+      "type": "air_quality",
+      "value": "PM2.5: 18 μg/m³（优）",
+      "updated_at": "2026-05-08 01:25:53"
+    },
+    "bathroom_humidity": {
+      "room": "bathroom",
+      "type": "humidity",
+      "value": "72%",
+      "updated_at": "2026-05-08 01:25:53"
+    }
+  }
+}
